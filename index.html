@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D&D Driving Center — Official App & Portal</title>
+  <meta name="description" content="Drive with Confidence. Learn from the Best. D&D Driving Center Android Application with 3D Driving Simulator, RTO Exam Preparation, and Online Slot Booking." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #11161F;
+      --surface-dark: #171E28;
+      --surface-card: #1F2836;
+      --surface-border: #283445;
+      --accent-gold: #E5A93C;
+      --accent-gold-bright: #F3C262;
+      --accent-teal: #2A9D8F;
+      --text-light: #EDEAE3;
+      --text-muted: #A0ABBB;
+      --success: #2EC4B6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(23, 30, 40, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--surface-border);
+      padding: 1rem 1.5rem;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-light);
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--accent-gold), #D4972B);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #11161F;
+      box-shadow: 0 4px 14px rgba(229, 169, 60, 0.3);
+    }
+
+    .brand-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cta-btn {
+      background: linear-gradient(135deg, var(--accent-gold), #D4972B);
+      color: #11161F;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(229, 169, 60, 0.35);
+    }
+
+    .secondary-btn {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      color: var(--text-light);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .secondary-btn:hover {
+      background: #283445;
+      border-color: var(--accent-gold);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(229, 169, 60, 0.12);
+      border: 1px solid rgba(229, 169, 60, 0.3);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent-gold-bright), #D4972B);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 2rem;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    /* WEB SIMULATOR PREVIEW STYLING */
+    .simulator-container {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      background: var(--surface-dark);
+      border: 2px solid var(--accent-gold);
+      border-radius: 20px;
+      padding: 1.25rem;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .sim-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .sim-title {
+      font-weight: 700;
+      color: var(--accent-gold);
+      font-size: 1.1rem;
+    }
+
+    .sim-stats {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    #simCanvas {
+      width: 100%;
+      height: 320px;
+      border-radius: 14px;
+      background: #000;
+      display: block;
+    }
+
+    .sim-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .sim-btn-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .sim-ctrl-btn {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      color: var(--text-light);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.1s;
+    }
+
+    .sim-ctrl-btn:active {
+      background: var(--accent-gold);
+      color: #11161F;
+    }
+
+    .nitro-btn {
+      background: #06B6D4;
+      color: #fff;
+      border: none;
+    }
+
+    .nitro-btn:hover {
+      background: #0891B2;
+    }
+
+    .features {
+      padding: 3rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(229, 169, 60, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-light);
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .tech-banner {
+      background: var(--surface-dark);
+      border: 1px solid var(--surface-border);
+      border-radius: 20px;
+      padding: 3rem 1.5rem;
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .tech-tags {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .tag {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+
+    footer {
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--surface-border);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <div class="brand-logo">D&amp;D</div>
+        <div>
+          <div class="brand-title">D&amp;D Driving Center</div>
+          <div class="brand-sub">Android Application</div>
+        </div>
+      </a>
+      <a href="https://github.com" target="_blank" class="cta-btn">
+        <span>⭐ View on GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="badge-pill">
+        <span>✨ Native Android 14+ • Jetpack Compose • Gyroscope Steering • 3D Simulator</span>
+      </div>
+      <h1>Drive with Confidence.<br /><span>Learn from the Best.</span></h1>
+      <p>
+        The official modern Android application for D&amp;D Driving Center. Packed with custom 3D vehicle physics simulator, official RTO mock test questions, live GPS pickup radar, and flexible 0% interest EMI payment calculator.
+      </p>
+      <div class="hero-actions">
+        <a href="#features" class="cta-btn">
+          <span>🚗 Explore App Features</span>
+        </a>
+        <a href="#simulator" class="secondary-btn">
+          <span>🎮 Try Interactive Web Simulator</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- LIVE HTML5 WEB CANVAS SIMULATOR PREVIEW -->
+    <section id="simulator" class="simulator-container">
+      <div class="sim-header">
+        <div class="sim-title">🎮 3D Road Simulator (Live Web Preview)</div>
+        <div class="sim-stats">
+          <span style="color: var(--accent-gold);">SPEED: <span id="speedVal">0</span> KM/H</span>
+          <span style="color: var(--success);">GEAR: <span id="gearVal">D</span></span>
+          <span style="color: #06B6D4;">XP: <span id="xpVal">1250</span></span>
+        </div>
+      </div>
+      <canvas id="simCanvas" width="800" height="320"></canvas>
+      <div class="sim-controls">
+        <div class="sim-btn-group">
+          <button class="sim-ctrl-btn" onmousedown="steer(-15)" onmouseup="steer(0)">◀ Steer Left</button>
+          <button class="sim-ctrl-btn" onmousedown="steer(15)" onmouseup="steer(0)">Steer Right ▶</button>
+          <button class="sim-ctrl-btn" onclick="toggleNight()">🌙 Night/Day</button>
+        </div>
+        <div class="sim-btn-group">
+          <button class="sim-ctrl-btn" style="color: #2EC4B6;" onclick="accelerate()">⚡ Accelerate</button>
+          <button class="sim-ctrl-btn" style="color: #EF4444;" onclick="brake()">🛑 Brake</button>
+          <button class="sim-ctrl-btn nitro-btn" onclick="boostNitro()">🚀 Nitro</button>
+        </div>
+      </div>
+      <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center;">
+        💡 Controls: Arrow keys (← / → / ↑ / ↓) or on-screen buttons • Space for Nitro Boost
+      </p>
+    </section>
+
+    <section id="features" class="features">
+      <div class="section-title">
+        <h2>Engineered for Modern Learners</h2>
+        <p>Premium features tailored for safe, certified, and confident driving mastery.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">🎮</div>
+          <h3>3D Interactive Simulator</h3>
+          <p>Real-time Canvas physics rendering steerable vehicle controls, clutch biting telemetry, arcade nitro boost, reverse parallel parking sonar, and tilt gyroscope mode.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🛑</div>
+          <h3>RTO Quiz & Voiceover Audio</h3>
+          <p>Comprehensive interactive practice exams with official Indian traffic signs, Multilingual translation (English, Hindi, Bengali), and Text-to-Speech audio voiceover.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📍</div>
+          <h3>Live GPS Pickup Radar</h3>
+          <p>Real-time mock radar showing assigned certified instructors, ETA estimations, and vehicle pickup coordinates across all driving zones.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">💳</div>
+          <h3>0% Interest EMI Calculator</h3>
+          <p>Transparent installment calculator for Manual, Automatic SUV, and Combo training packages with instant UPI receipt simulation.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📜</div>
+          <h3>Student Certificate Generator</h3>
+          <p>Instant digital driving completion certificates with dynamic student name stamping, issue dates, and 1-tap Android share intent sheet.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🆘</div>
+          <h3>24x7 Roadside Safety SOS</h3>
+          <p>Direct 1-tap emergency patrol hotline with visual step-by-step troubleshooting for flat tires, battery jump-starts, and brake failures.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tech" class="tech-banner">
+      <div class="section-title">
+        <h2>Technology Stack &amp; Architecture</h2>
+        <p>Built with Google's recommended modern Android architecture.</p>
+      </div>
+      <div class="tech-tags">
+        <span class="tag">Kotlin 2.0+</span>
+        <span class="tag">Jetpack Compose</span>
+        <span class="tag">Material Design 3</span>
+        <span class="tag">Room SQLite Database</span>
+        <span class="tag">Kotlin Coroutines &amp; Flow</span>
+        <span class="tag">Hardware Sensor Gyroscope</span>
+        <span class="tag">Custom 2D/3D Canvas Engine</span>
+        <span class="tag">Vercel Ready</span>
+        <span class="tag">GitHub Actions CI/CD</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 D&amp;D Driving Center. All rights reserved. Built with Jetpack Compose &amp; Material 3.</p>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('simCanvas');
+    const ctx = canvas.getContext('2d');
+    let speed = 25;
+    let steering = 0;
+    let offset = 0;
+    let isNight = true;
+    let xp = 1250;
+
+    function draw() {
+      const w = canvas.width;
+      const h = canvas.height;
+      const horizon = h * 0.45;
+
+      // Sky
+      const skyGrad = ctx.createLinearGradient(0, 0, 0, horizon);
+      if (isNight) {
+        skyGrad.addColorStop(0, '#030712');
+        skyGrad.addColorStop(1, '#111827');
+      } else {
+        skyGrad.addColorStop(0, '#1E3A8A');
+        skyGrad.addColorStop(1, '#60A5FA');
+      }
+      ctx.fillStyle = skyGrad;
+      ctx.fillRect(0, 0, w, horizon);
+
+      // Stars
+      if (isNight) {
+        ctx.fillStyle = '#FFFFFF';
+        for (let i = 0; i < 25; i++) {
+          const sx = (i * 47) % w;
+          const sy = (i * 23) % (horizon * 0.8);
+          ctx.beginPath();
+          ctx.arc(sx, sy, 1.2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Skyline
+      ctx.fillStyle = isNight ? '#0B1324' : '#1E293B';
+      for (let b = 0; b < w; b += 50) {
+        const bh = ((b * 13) % 40) + 20;
+        ctx.fillRect(b, horizon - bh, 40, bh);
+      }
+
+      // Road
+      const vanishingX = w * 0.5 + steering * 1.5;
+      ctx.beginPath();
+      ctx.moveTo(vanishingX - 30, horizon);
+      ctx.lineTo(vanishingX + 30, horizon);
+      ctx.lineTo(w * 1.1, h);
+      ctx.lineTo(-w * 0.1, h);
+      ctx.closePath();
+      ctx.fillStyle = isNight ? '#0F172A' : '#1B263B';
+      ctx.fill();
+
+      // Road shoulders
+      ctx.strokeStyle = '#E5A93C';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(vanishingX - 30, horizon);
+      ctx.lineTo(-w * 0.1, h);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(vanishingX + 30, horizon);
+      ctx.lineTo(w * 1.1, h);
+      ctx.stroke();
+
+      // Lane markings
+      offset = (offset + speed * 0.15) % 100;
+      for (let i = 0; i < 6; i++) {
+        const prog = ((i * 16.6 + offset) % 100) / 100;
+        const py = horizon + (h - horizon) * prog;
+        const px = vanishingX;
+        const sw = 3 + prog * 10;
+        const sh = 4 + prog * 18;
+        ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(1, prog + 0.2)})`;
+        ctx.fillRect(px - sw / 2, py, sw, sh);
+      }
+
+      // Oncoming Car
+      const carProg = ((offset * 1.2) % 100) / 100;
+      const cy = horizon + (h - horizon) * carProg * 0.7;
+      const cx = vanishingX + (w * 0.18 * carProg);
+      const cw = 12 + carProg * 35;
+      const ch = 8 + carProg * 24;
+
+      ctx.fillStyle = '#DC2626';
+      ctx.fillRect(cx - cw / 2, cy, cw, ch);
+      ctx.fillStyle = '#F3C262';
+      ctx.beginPath();
+      ctx.arc(cx - cw * 0.3, cy + ch * 0.4, 2 + carProg * 3, 0, Math.PI * 2);
+      ctx.arc(cx + cw * 0.3, cy + ch * 0.4, 2 + carProg * 3, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Steering wheel at bottom right (RHD)
+      const stX = w * 0.75;
+      const stY = h - 25;
+      ctx.save();
+      ctx.translate(stX, stY);
+      ctx.rotate((steering * Math.PI) / 180);
+      ctx.beginPath();
+      ctx.arc(0, 0, 40, 0, Math.PI * 2);
+      ctx.strokeStyle = '#E5A93C';
+      ctx.lineWidth = 6;
+      ctx.stroke();
+      ctx.fillStyle = '#171E28';
+      ctx.fill();
+      ctx.restore();
+
+      requestAnimationFrame(draw);
+    }
+
+    function accelerate() {
+      speed = Math.min(90, speed + 10);
+      document.getElementById('speedVal').textContent = Math.round(speed);
+    }
+
+    function brake() {
+      speed = Math.max(0, speed - 15);
+      document.getElementById('speedVal').textContent = Math.round(speed);
+    }
+
+    function steer(val) {
+      steering = val;
+    }
+
+    function toggleNight() {
+      isNight = !isNight;
+    }
+
+    function boostNitro() {
+      speed = Math.min(120, speed + 30);
+      xp += 150;
+      document.getElementById('speedVal').textContent = Math.round(speed);
+      document.getElementById('xpVal').textContent = xp;
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp') accelerate();
+      if (e.key === 'ArrowDown') brake();
+      if (e.key === 'ArrowLeft') steer(-20);
+      if (e.key === 'ArrowRight') steer(20);
+      if (e.key === ' ') boostNitro();
+    });
+
+    window.addEventListener('keyup', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') steer(0);
+    });
+
+    draw();
+  </script>
+</body>
+</html>
