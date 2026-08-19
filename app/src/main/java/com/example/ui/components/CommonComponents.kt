@@ -83,7 +83,8 @@ fun TopBarHeader(
     currentTab: NavigationTab,
     isDarkTheme: Boolean,
     onToggleTheme: () -> Unit,
-    onOpenCallSupport: () -> Unit
+    onOpenCallSupport: () -> Unit,
+    onOpenAdmin: () -> Unit = {}
 ) {
     TopAppBar(
         title = {
@@ -132,6 +133,16 @@ fun TopBarHeader(
             }
         },
         actions = {
+            IconButton(
+                onClick = onOpenAdmin,
+                modifier = Modifier.testTag("btn_open_admin_portal")
+            ) {
+                Icon(
+                    imageVector = Icons.Default.AdminPanelSettings,
+                    contentDescription = "Admin Portal",
+                    tint = ImperialGold
+                )
+            }
             IconButton(
                 onClick = onToggleTheme,
                 modifier = Modifier.testTag("btn_toggle_theme")

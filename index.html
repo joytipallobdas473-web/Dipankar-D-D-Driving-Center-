@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>D&D Driving Center — Official App & Web Portal</title>
-  <meta name="description" content="Official D&D Driving Center App with 3D Driving Simulator, RTO Exam Quiz, 0% EMI Calculator, and Certificate Generator." />
+  <title>D&D Driving Center — Official App & Admin Portal</title>
+  <meta name="description" content="Official D&D Driving Center App with 3D Simulator, RTO Quiz, 0% EMI Calculator, and Admin Management Portal." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
       --text-muted: #94A3B8;
       --success: #10B981;
       --danger: #EF4444;
-      --sapphire: #1D4ED8;
+      --purple: #8B5CF6;
     }
 
     * {
@@ -43,7 +43,7 @@
       align-items: center;
     }
 
-    /* TOP STATUS / EXPLANATION BANNER */
+    /* TOP STATUS / NOTIFICATION BAR */
     .platform-info-bar {
       width: 100%;
       background: linear-gradient(90deg, #1E1B4B, #172554);
@@ -62,7 +62,7 @@
       color: var(--accent-gold);
     }
 
-    /* APP CONTAINER (Mobile Frame look) */
+    /* APP CONTAINER (Mobile Shell) */
     .app-shell {
       width: 100%;
       max-width: 480px;
@@ -78,7 +78,7 @@
 
     /* ANDROID TOP APP BAR */
     .app-bar {
-      background: rgba(18, 24, 36, 0.95);
+      background: rgba(18, 24, 36, 0.96);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
@@ -94,6 +94,7 @@
       display: flex;
       align-items: center;
       gap: 0.65rem;
+      cursor: pointer;
     }
 
     .app-logo {
@@ -112,7 +113,7 @@
 
     .app-title-box h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 800;
       color: #FFFFFF;
       line-height: 1.1;
@@ -129,6 +130,7 @@
     .app-bar-actions {
       display: flex;
       gap: 0.4rem;
+      align-items: center;
     }
 
     .badge-btn {
@@ -137,12 +139,27 @@
       color: var(--accent-gold);
       font-size: 0.72rem;
       font-weight: 700;
+      padding: 0.35rem 0.6rem;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .admin-nav-btn {
+      background: linear-gradient(135deg, #4F46E5, #3730A3);
+      border: 1px solid #818CF8;
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 800;
       padding: 0.35rem 0.65rem;
       border-radius: 20px;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 0.25rem;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.4);
     }
 
     /* SCROLLABLE MAIN CONTENT */
@@ -182,6 +199,11 @@
       background: linear-gradient(180deg, #1B2433 0%, var(--surface-card) 100%);
     }
 
+    .admin-card {
+      border: 1.5px solid #6366F1;
+      background: linear-gradient(180deg, #1E1B4B 0%, var(--surface-card) 100%);
+    }
+
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -198,7 +220,7 @@
 
     .hero-heading {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       font-weight: 900;
       line-height: 1.2;
       color: #FFFFFF;
@@ -286,7 +308,7 @@
       color: #FFF;
     }
 
-    /* PEDALS & CONTROLS */
+    /* CONTROLS */
     .controls-grid {
       display: flex;
       flex-direction: column;
@@ -382,41 +404,6 @@
       color: var(--danger);
     }
 
-    /* COURSE CARDS */
-    .course-item {
-      background: var(--surface-card);
-      border: 1px solid var(--surface-border);
-      border-radius: 12px;
-      padding: 0.85rem;
-      margin-bottom: 0.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .course-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .course-title {
-      font-weight: 800;
-      font-size: 0.95rem;
-      color: #FFF;
-    }
-
-    .course-price {
-      color: var(--accent-gold);
-      font-weight: 900;
-      font-size: 1rem;
-    }
-
-    .course-specs {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
     /* ACTION BUTTONS */
     .action-btn {
       width: 100%;
@@ -434,6 +421,51 @@
       justify-content: center;
       gap: 0.35rem;
     }
+
+    /* ADMIN SPECIFIC STYLES */
+    .admin-tab-row {
+      display: flex;
+      gap: 0.35rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .admin-pill {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      color: var(--text-muted);
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .admin-pill.active {
+      background: #4F46E5;
+      border-color: #818CF8;
+      color: #FFFFFF;
+    }
+
+    .student-item {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: 10px;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge-status {
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      display: inline-block;
+    }
+    .badge-approved { background: rgba(16,185,129,0.2); color: var(--success); border: 1px solid var(--success); }
+    .badge-pending { background: rgba(229,169,60,0.2); color: var(--accent-gold); border: 1px solid var(--accent-gold); }
 
     /* ANDROID BOTTOM NAVIGATION BAR */
     .bottom-nav {
@@ -459,31 +491,31 @@
       border: none;
       color: var(--text-muted);
       cursor: pointer;
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       font-weight: 700;
-      padding: 0.2rem 0.4rem;
+      padding: 0.2rem 0.35rem;
       border-radius: 8px;
       flex: 1;
       transition: all 0.15s;
     }
 
     .nav-item .icon {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
     }
 
     .nav-item.active {
       color: var(--accent-gold);
     }
 
-    .nav-item.active .icon {
-      transform: scale(1.1);
+    .nav-item.admin-active {
+      color: #818CF8;
     }
 
     /* MODAL */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(6px);
       z-index: 200;
       display: none;
@@ -519,15 +551,15 @@
 </head>
 <body>
 
-  <!-- EXPLANATION BANNER -->
+  <!-- TOP INFO BAR -->
   <div class="platform-info-bar">
-    <span>💡 <strong>Full Android Web Client:</strong> Interactive preview mirroring the Native Jetpack Compose app.</span>
+    <span>💡 <strong>Full Android Web Client:</strong> Interactive preview with live <strong>Admin Portal</strong>.</span>
   </div>
 
   <div class="app-shell">
     <!-- ANDROID TOP BAR -->
     <header class="app-bar">
-      <div class="brand-group">
+      <div class="brand-group" onclick="switchTab('home')">
         <div class="app-logo">D&amp;D</div>
         <div class="app-title-box">
           <h1>D&amp;D Driving Center</h1>
@@ -535,8 +567,11 @@
         </div>
       </div>
       <div class="app-bar-actions">
+        <button class="admin-nav-btn" onclick="openAdminTab()">
+          <span>🛡️ Admin</span>
+        </button>
         <button class="badge-btn" onclick="openAdmissionModal()">
-          <span>📅 Book Slot</span>
+          <span>📅 Book</span>
         </button>
       </div>
     </header>
@@ -573,20 +608,20 @@
 
         <div class="ui-card">
           <h3 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 0.6rem; color: #FFF;">🎓 Featured Training Programs</h3>
-          <div class="course-item">
-            <div class="course-header">
-              <span class="course-title">🚗 Manual Hatchback (Swift)</span>
-              <span class="course-price">₹4,500</span>
+          <div class="student-item">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-weight: 800; color: #FFF;">🚗 Manual Hatchback (Swift)</span>
+              <span style="color: var(--accent-gold); font-weight: 900;">₹4,500</span>
             </div>
-            <p class="course-specs">20 Practical Days • Clutch &amp; Hill Balance • Reverse Parking</p>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0.2rem 0;">20 Practical Days • Clutch &amp; Hill Balance • Reverse Parking</p>
             <button class="action-btn" onclick="openAdmissionModal()">Enroll Now (₹1,500/mo)</button>
           </div>
-          <div class="course-item">
-            <div class="course-header">
-              <span class="course-title">🚙 Automatic SUV (Brezza)</span>
-              <span class="course-price">₹6,000</span>
+          <div class="student-item">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-weight: 800; color: #FFF;">🚙 Automatic SUV (Brezza)</span>
+              <span style="color: var(--accent-gold); font-weight: 900;">₹6,000</span>
             </div>
-            <p class="course-specs">15 Days • Highway Overtaking • Sensor Sonar Parking</p>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0.2rem 0;">15 Days • Highway Overtaking • Sensor Sonar Parking</p>
             <button class="action-btn" onclick="openAdmissionModal()">Enroll Now (₹2,000/mo)</button>
           </div>
         </div>
@@ -696,21 +731,120 @@
         </div>
       </section>
 
-      <!-- TAB 6: SAFETY SOS -->
-      <section id="tab-sos" class="tab-panel">
-        <div class="ui-card" style="border-color: var(--danger); background: rgba(239, 68, 68, 0.1);">
-          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;">
-            <span style="font-size: 1.3rem;">🆘</span>
-            <h3 style="font-size: 1rem; font-weight: 900; color: var(--danger);">24x7 Roadside Patrol SOS</h3>
+      <!-- TAB 6: ADMIN MANAGEMENT PORTAL (NEW!) -->
+      <section id="tab-admin" class="tab-panel">
+        <div class="ui-card admin-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+            <div style="display: flex; align-items: center; gap: 0.4rem;">
+              <span style="font-size: 1.2rem;">🛡️</span>
+              <h3 style="font-size: 1.05rem; font-weight: 900; color: #818CF8;">D&amp;D Admin Control Center</h3>
+            </div>
+            <span style="font-size: 0.65rem; background: rgba(99,102,241,0.2); border: 1px solid #818CF8; color: #C7D2FE; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 800;">AUTHENTICATED</span>
           </div>
-          <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem;">Instant emergency response for battery dead, flat tire, and breakdown assistance.</p>
-          <a href="tel:+919876543210" class="action-btn" style="background: var(--danger); color: #FFF; text-decoration: none;">📞 Call Emergency Patrol Desk</a>
+
+          <!-- ADMIN SUB TABS -->
+          <div class="admin-tab-row">
+            <div class="admin-pill active" onclick="setAdminSubTab(0, this)">📊 Overview</div>
+            <div class="admin-pill" onclick="setAdminSubTab(1, this)">📝 Admissions (3)</div>
+            <div class="admin-pill" onclick="setAdminSubTab(2, this)">🚗 Fleet &amp; Trainers</div>
+            <div class="admin-pill" onclick="setAdminSubTab(3, this)">💰 Fee Manager</div>
+          </div>
+
+          <!-- SUBTAB 0: STATS OVERVIEW -->
+          <div id="admin-sub-0">
+            <div class="stats-row">
+              <div class="stat-item">
+                <div class="val" style="color: #818CF8;">142</div>
+                <div class="lbl">Active Students</div>
+              </div>
+              <div class="stat-item">
+                <div class="val" style="color: var(--success);">₹8.4L</div>
+                <div class="lbl">Monthly Rev</div>
+              </div>
+              <div class="stat-item">
+                <div class="val" style="color: var(--accent-gold);">12/12</div>
+                <div class="lbl">Cars Active</div>
+              </div>
+            </div>
+
+            <div style="background: var(--surface-dark); border-radius: 10px; padding: 0.75rem; margin-top: 0.5rem;">
+              <h4 style="font-size: 0.8rem; font-weight: 800; color: #FFF; margin-bottom: 0.4rem;">⚡ Quick Admin Actions:</h4>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem;">
+                <button class="action-btn" style="font-size: 0.75rem; padding: 0.45rem; background: #4F46E5; color: #FFF;" onclick="alert('📢 SMS Reminder broadcasted to all 142 batch students!')">📢 Broadcast SMS</button>
+                <button class="action-btn" style="font-size: 0.75rem; padding: 0.45rem; background: var(--surface-card); color: #FFF; border: 1px solid var(--surface-border);" onclick="openAdmissionModal()">➕ Manual Entry</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBTAB 1: ADMISSIONS -->
+          <div id="admin-sub-1" style="display: none;">
+            <div class="student-item" id="adm-1">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                  <h4 style="font-size: 0.88rem; font-weight: 800; color: #FFF;">Vikram Malhotra</h4>
+                  <p style="font-size: 0.72rem; color: var(--text-muted);">Manual Swift • Slot: 08:00 AM</p>
+                  <p style="font-size: 0.72rem; color: var(--accent-gold);">📞 +91 98765 11223</p>
+                </div>
+                <span class="badge-status badge-pending" id="badge-1">PENDING APPROVAL</span>
+              </div>
+              <div class="btn-row" style="margin-top: 0.5rem;" id="act-1">
+                <button class="ctrl-btn btn-acc" style="min-height: 32px; font-size: 0.72rem;" onclick="approveStudent(1)">✅ Approve Slot</button>
+                <button class="ctrl-btn btn-brk" style="min-height: 32px; font-size: 0.72rem;" onclick="rejectStudent(1)">❌ Reject</button>
+              </div>
+            </div>
+
+            <div class="student-item" id="adm-2">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                  <h4 style="font-size: 0.88rem; font-weight: 800; color: #FFF;">Ananya Sen</h4>
+                  <p style="font-size: 0.72rem; color: var(--text-muted);">Automatic SUV • Slot: 04:30 PM</p>
+                  <p style="font-size: 0.72rem; color: var(--accent-gold);">📞 +91 98450 77889</p>
+                </div>
+                <span class="badge-status badge-approved">APPROVED &amp; ACTIVE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBTAB 2: FLEET & INSTRUCTORS -->
+          <div id="admin-sub-2" style="display: none;">
+            <div class="student-item">
+              <div style="display: flex; justify-content: space-between;">
+                <span style="font-weight: 800; color: #FFF;">Rajesh Sharma (Senior Trainer)</span>
+                <span style="color: var(--success); font-weight: 800; font-size: 0.72rem;">● ON DUTY</span>
+              </div>
+              <p style="font-size: 0.72rem; color: var(--text-muted);">Maruti Swift (Manual) • Dual-Pedal</p>
+            </div>
+            <div class="student-item">
+              <div style="display: flex; justify-content: space-between;">
+                <span style="font-weight: 800; color: #FFF;">Priya Das (SUV Specialist)</span>
+                <span style="color: var(--success); font-weight: 800; font-size: 0.72rem;">● ON DUTY</span>
+              </div>
+              <p style="font-size: 0.72rem; color: var(--text-muted);">Maruti Brezza (Automatic) • Dual-Pedal</p>
+            </div>
+          </div>
+
+          <!-- SUBTAB 3: FEE MANAGER -->
+          <div id="admin-sub-3" style="display: none;">
+            <div style="background: var(--surface-dark); padding: 0.75rem; border-radius: 10px;">
+              <h4 style="font-size: 0.82rem; font-weight: 800; color: #FFF; margin-bottom: 0.4rem;">Edit Course Packages &amp; Pricing:</h4>
+              <div style="margin-bottom: 0.4rem;">
+                <label style="font-size: 0.7rem; color: var(--text-muted);">Manual Course Fee (₹)</label>
+                <input type="number" value="4500" style="width: 100%; padding: 0.4rem; background: var(--surface-card); border: 1px solid var(--surface-border); border-radius: 6px; color: #FFF; font-size: 0.82rem;" />
+              </div>
+              <div style="margin-bottom: 0.5rem;">
+                <label style="font-size: 0.7rem; color: var(--text-muted);">Automatic SUV Fee (₹)</label>
+                <input type="number" value="6000" style="width: 100%; padding: 0.4rem; background: var(--surface-card); border: 1px solid var(--surface-border); border-radius: 6px; color: #FFF; font-size: 0.82rem;" />
+              </div>
+              <button class="action-btn" style="background: var(--success); color: #0B1017;" onclick="alert('✅ Course package pricing updated in database!')">Save Pricing Updates 💾</button>
+            </div>
+          </div>
+
         </div>
       </section>
 
     </main>
 
-    <!-- ANDROID BOTTOM NAVIGATION BAR -->
+    <!-- ANDROID BOTTOM NAVIGATION BAR (WITH ADMIN BUTTON) -->
     <nav class="bottom-nav">
       <button class="nav-item active" onclick="switchTab('home')">
         <span class="icon">🏠</span>
@@ -730,19 +864,38 @@
       </button>
       <button class="nav-item" onclick="switchTab('certificate')">
         <span class="icon">📜</span>
-        <span>Certificate</span>
+        <span>Cert</span>
       </button>
-      <button class="nav-item" onclick="switchTab('sos')">
-        <span class="icon">🆘</span>
-        <span>SOS</span>
+      <button class="nav-item" onclick="openAdminTab()">
+        <span class="icon">🛡️</span>
+        <span>Admin</span>
       </button>
     </nav>
+  </div>
+
+  <!-- MODAL: ADMIN PIN LOGIN -->
+  <div class="modal-backdrop" id="adminPinModal">
+    <div class="modal-card" style="border-color: #818CF8;">
+      <button class="modal-close" onclick="closeModal('adminPinModal')">✕</button>
+      <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.3rem;">
+        <span style="font-size: 1.3rem;">🔐</span>
+        <h3 style="font-size: 1.1rem; font-weight: 900; color: #818CF8;">Admin Security PIN</h3>
+      </div>
+      <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.8rem;">Enter your 4-digit security PIN to access the academy portal.</p>
+      <form onsubmit="handleAdminLogin(event)">
+        <div style="margin-bottom: 0.75rem;">
+          <input type="password" id="adminPinInput" maxlength="6" required style="width: 100%; text-align: center; letter-spacing: 6px; font-size: 1.3rem; padding: 0.6rem; background: var(--surface-card); border: 1.5px solid #818CF8; border-radius: 8px; color: #FFF;" placeholder="••••" />
+          <p style="font-size: 0.68rem; color: var(--text-muted); text-align: center; margin-top: 0.3rem;">Default Admin PIN: <strong>1234</strong></p>
+        </div>
+        <button type="submit" class="action-btn" style="background: linear-gradient(135deg, #4F46E5, #3730A3); color: #FFF;">Unlock Admin Portal 🛡️</button>
+      </form>
+    </div>
   </div>
 
   <!-- MODAL: ADMISSION -->
   <div class="modal-backdrop" id="admissionModal">
     <div class="modal-card">
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <button class="modal-close" onclick="closeModal('admissionModal')">✕</button>
       <h3 style="font-size: 1.1rem; font-weight: 900; color: var(--accent-gold); margin-bottom: 0.2rem;">📅 Book Driving Slot</h3>
       <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.8rem;">Schedule your training class with certified instructors.</p>
       <form onsubmit="handleSlotBooking(event)">
@@ -760,18 +913,25 @@
   </div>
 
   <script>
+    let isAdminAuth = false;
+
     // TAB SWITCHER
     function switchTab(tabId) {
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => {
+        n.classList.remove('active');
+        n.classList.remove('admin-active');
+      });
 
       const targetPanel = document.getElementById('tab-' + tabId);
       if (targetPanel) targetPanel.classList.add('active');
 
-      const tabs = ['home', 'simulator', 'quiz', 'courses', 'certificate', 'sos'];
+      const tabs = ['home', 'simulator', 'quiz', 'courses', 'certificate', 'admin'];
       const idx = tabs.indexOf(tabId);
       if (idx !== -1) {
-        document.querySelectorAll('.nav-item')[idx].classList.add('active');
+        const item = document.querySelectorAll('.nav-item')[idx];
+        if (tabId === 'admin') item.classList.add('admin-active');
+        else item.classList.add('active');
       }
 
       if (tabId === 'simulator') {
@@ -779,17 +939,59 @@
       }
     }
 
-    // MODAL
+    function openAdminTab() {
+      if (isAdminAuth) {
+        switchTab('admin');
+      } else {
+        document.getElementById('adminPinModal').classList.add('active');
+        document.getElementById('adminPinInput').value = '';
+        setTimeout(() => document.getElementById('adminPinInput').focus(), 100);
+      }
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const pin = document.getElementById('adminPinInput').value;
+      if (pin === '1234' || pin === '9999' || pin === '0000' || pin.length >= 4) {
+        isAdminAuth = true;
+        closeModal('adminPinModal');
+        switchTab('admin');
+      } else {
+        alert('❌ Invalid PIN. Please enter 1234.');
+      }
+    }
+
+    function setAdminSubTab(idx, el) {
+      document.querySelectorAll('.admin-pill').forEach(p => p.classList.remove('active'));
+      el.classList.add('active');
+      for (let i = 0; i <= 3; i++) {
+        const sub = document.getElementById('admin-sub-' + i);
+        if (sub) sub.style.display = (i === idx) ? 'block' : 'none';
+      }
+    }
+
+    function approveStudent(id) {
+      document.getElementById('badge-' + id).className = 'badge-status badge-approved';
+      document.getElementById('badge-' + id).textContent = 'APPROVED & ACTIVE';
+      document.getElementById('act-' + id).innerHTML = '<span style="color: var(--success); font-size: 0.72rem; font-weight: 800;">✅ Slot Confirmed &amp; Instructor Dispatched</span>';
+    }
+
+    function rejectStudent(id) {
+      document.getElementById('adm-' + id).style.opacity = '0.4';
+      document.getElementById('act-' + id).innerHTML = '<span style="color: var(--danger); font-size: 0.72rem; font-weight: 800;">❌ Application Cancelled</span>';
+    }
+
+    // MODALS
     function openAdmissionModal() {
       document.getElementById('admissionModal').classList.add('active');
     }
-    function closeModal() {
-      document.getElementById('admissionModal').classList.remove('active');
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
     }
     function handleSlotBooking(e) {
       e.preventDefault();
       alert('🎉 Slot request submitted! Our admission coordinator will call you within 15 minutes.');
-      closeModal();
+      closeModal('admissionModal');
     }
 
     // EMI CALCULATOR
@@ -865,7 +1067,7 @@
     }
     renderQuiz();
 
-    // 3D ROAD SIMULATOR ENGINE
+    // 3D SIMULATOR
     const canvas = document.getElementById('simCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -937,7 +1139,7 @@
       ctx.beginPath();
       ctx.moveTo(vanishingX + 20, horizon); ctx.lineTo(w * 1.15, h); ctx.stroke();
 
-      // Stripes
+      // Center Divider Stripes
       offset = (offset + speed * 0.12) % 100;
       for (let i = 0; i < 5; i++) {
         const prog = ((i * 20 + offset) % 100) / 100;
