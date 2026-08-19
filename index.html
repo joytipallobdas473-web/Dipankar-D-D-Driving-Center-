@@ -3,24 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>D&D Driving Center — Official App & Portal</title>
-  <meta name="description" content="Drive with Confidence. Learn from the Best. D&D Driving Center Android Application with 3D Driving Simulator, RTO Exam Preparation, and Online Slot Booking." />
+  <title>D&D Driving Center — Official App & Web Portal</title>
+  <meta name="description" content="Official D&D Driving Center App with 3D Driving Simulator, RTO Exam Quiz, 0% EMI Calculator, and Certificate Generator." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #0D131C;
-      --surface-dark: #131B26;
-      --surface-card: #1C2636;
-      --surface-border: #2B3A4F;
+      --bg-dark: #0B1017;
+      --surface-dark: #121824;
+      --surface-card: #182232;
+      --surface-card-hover: #1F2C40;
+      --surface-border: #28374D;
       --accent-gold: #E5A93C;
       --accent-gold-bright: #F5C66C;
       --accent-cyan: #06B6D4;
-      --text-light: #F1EFEA;
-      --text-muted: #9BAEC4;
-      --success: #2EC4B6;
+      --text-light: #F3EFE6;
+      --text-muted: #94A3B8;
+      --success: #10B981;
       --danger: #EF4444;
+      --sapphire: #1D4ED8;
     }
 
     * {
@@ -34,257 +36,226 @@
       background-color: var(--bg-dark);
       color: var(--text-light);
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.5;
-      overflow-x: hidden;
+      line-height: 1.4;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* HEADER & NAVIGATION */
-    header {
-      background: rgba(19, 27, 38, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+    /* TOP STATUS / EXPLANATION BANNER */
+    .platform-info-bar {
+      width: 100%;
+      background: linear-gradient(90deg, #1E1B4B, #172554);
+      border-bottom: 1px solid rgba(229, 169, 60, 0.3);
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      color: #CBD5E1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .platform-info-bar strong {
+      color: var(--accent-gold);
+    }
+
+    /* APP CONTAINER (Mobile Frame look) */
+    .app-shell {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background-color: var(--surface-dark);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+      border-left: 1px solid var(--surface-border);
+      border-right: 1px solid var(--surface-border);
+    }
+
+    /* ANDROID TOP APP BAR */
+    .app-bar {
+      background: rgba(18, 24, 36, 0.95);
+      backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
-      z-index: 100;
-      border-bottom: 1px solid var(--surface-border);
+      z-index: 50;
       padding: 0.75rem 1rem;
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
+      border-bottom: 1px solid var(--surface-border);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 0.5rem;
     }
 
-    .brand {
+    .brand-group {
       display: flex;
       align-items: center;
       gap: 0.65rem;
-      text-decoration: none;
-      color: var(--text-light);
-      min-width: 0;
     }
 
-    .brand-logo {
-      width: 38px;
-      height: 38px;
-      min-width: 38px;
-      background: linear-gradient(135deg, var(--accent-gold), #C98A20);
-      border-radius: 10px;
+    .app-logo {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent-gold), #B37410);
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: #0D131C;
-      box-shadow: 0 4px 12px rgba(229, 169, 60, 0.3);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
-
-    .brand-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
+      font-weight: 900;
       font-size: 1.05rem;
-      letter-spacing: 0.3px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      color: #0B1017;
+      box-shadow: 0 3px 10px rgba(229, 169, 60, 0.3);
     }
 
-    .brand-sub {
-      font-size: 0.68rem;
+    .app-title-box h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.1;
+    }
+
+    .app-title-box span {
+      font-size: 0.62rem;
       color: var(--accent-gold);
       text-transform: uppercase;
-      letter-spacing: 0.8px;
-      font-weight: 600;
+      letter-spacing: 0.6px;
+      font-weight: 700;
     }
 
-    .nav-actions {
+    .app-bar-actions {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .badge-btn {
+      background: rgba(229, 169, 60, 0.15);
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.35rem 0.65rem;
+      border-radius: 20px;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.25rem;
     }
 
-    .header-btn {
-      background: linear-gradient(135deg, var(--accent-gold), #C98A20);
-      color: #0D131C;
-      font-weight: 700;
-      font-size: 0.8rem;
-      padding: 0.5rem 0.9rem;
-      border-radius: 8px;
-      text-decoration: none;
+    /* SCROLLABLE MAIN CONTENT */
+    .app-content {
+      flex: 1;
+      padding: 1rem;
+      padding-bottom: 85px; /* space for bottom navigation */
+      overflow-y: auto;
+    }
+
+    /* TAB CONTENT PANELS */
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* CARDS & UI COMPONENTS */
+    .ui-card {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .gold-card {
+      border: 1.5px solid var(--accent-gold);
+      background: linear-gradient(180deg, #1B2433 0%, var(--surface-card) 100%);
+    }
+
+    .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      white-space: nowrap;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(229, 169, 60, 0.25);
-      transition: all 0.2s ease;
-    }
-
-    .header-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(229, 169, 60, 0.4);
-    }
-
-    /* MAIN CONTAINER */
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem 4rem;
-    }
-
-    /* HERO SECTION */
-    .hero {
-      text-align: center;
-      padding: 1.5rem 0.5rem 2rem;
-    }
-
-    .badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(229, 169, 60, 0.12);
-      border: 1px solid rgba(229, 169, 60, 0.3);
-      padding: 0.35rem 0.9rem;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 600;
+      background: rgba(229, 169, 60, 0.15);
+      border: 1px solid var(--accent-gold);
       color: var(--accent-gold);
-      margin-bottom: 1.25rem;
-      max-width: 100%;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 6vw, 3.2rem);
+      font-size: 0.68rem;
       font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-      color: #FFFFFF;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      margin-bottom: 0.5rem;
     }
 
-    .hero h1 span {
+    .hero-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      line-height: 1.2;
+      color: #FFFFFF;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-heading span {
       background: linear-gradient(135deg, var(--accent-gold-bright), #D4972B);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      display: inline-block;
     }
 
-    .hero p {
-      max-width: 620px;
-      margin: 0 auto 1.75rem;
+    .hero-p {
+      font-size: 0.82rem;
       color: var(--text-muted);
-      font-size: 0.98rem;
-      line-height: 1.6;
+      margin-bottom: 0.85rem;
     }
 
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-    }
-
-    .cta-primary {
-      background: linear-gradient(135deg, var(--accent-gold), #C98A20);
-      color: #0D131C;
-      font-weight: 700;
-      font-size: 0.9rem;
-      padding: 0.75rem 1.4rem;
-      border-radius: 10px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
+    /* QUICK STATS ROW */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 0.5rem;
-      cursor: pointer;
-      border: none;
-      box-shadow: 0 4px 15px rgba(229, 169, 60, 0.3);
-      transition: all 0.2s ease;
+      margin-bottom: 1rem;
     }
 
-    .cta-primary:active {
-      transform: scale(0.98);
-    }
-
-    .cta-secondary {
+    .stat-item {
       background: var(--surface-card);
       border: 1px solid var(--surface-border);
-      color: var(--text-light);
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 0.75rem 1.25rem;
       border-radius: 10px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      padding: 0.65rem 0.4rem;
+      text-align: center;
     }
 
-    .cta-secondary:active {
-      background: var(--surface-border);
-    }
-
-    /* 3D SIMULATOR CONTAINER */
-    .simulator-card {
-      background: var(--surface-dark);
-      border: 1.5px solid var(--accent-gold);
-      border-radius: 18px;
-      padding: 1rem;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
-      margin-bottom: 3.5rem;
-    }
-
-    .sim-top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.75rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .sim-title {
-      font-weight: 700;
-      font-size: 0.95rem;
+    .stat-item .val {
+      font-weight: 900;
+      font-size: 1.1rem;
       color: var(--accent-gold);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
     }
 
-    .sim-hud {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 0.3rem 0.75rem;
-      border-radius: 8px;
-      border: 1px solid var(--surface-border);
+    .stat-item .lbl {
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
     }
 
-    .canvas-wrapper {
+    /* 3D ROAD SIMULATOR */
+    .sim-viewport {
       position: relative;
       width: 100%;
-      height: 260px;
+      height: 220px;
       border-radius: 12px;
       overflow: hidden;
-      background: #000000;
+      background: #000;
       border: 1px solid var(--surface-border);
+      margin-bottom: 0.75rem;
     }
 
     #simCanvas {
@@ -294,459 +265,607 @@
       touch-action: none;
     }
 
-    .sim-controls-panel {
-      margin-top: 0.9rem;
+    .sim-hud-overlay {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .hud-chip {
+      background: rgba(11, 16, 23, 0.85);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--accent-gold);
+      border-radius: 6px;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+
+    /* PEDALS & CONTROLS */
+    .controls-grid {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
-    }
-
-    .sim-btn-row {
-      display: flex;
       gap: 0.5rem;
-      width: 100%;
     }
 
-    .sim-btn {
+    .btn-row {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .ctrl-btn {
       flex: 1;
-      min-height: 44px;
+      min-height: 42px;
       background: var(--surface-card);
       border: 1px solid var(--surface-border);
       color: var(--text-light);
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.35rem;
-      cursor: pointer;
-      user-select: none;
-      -webkit-user-select: none;
-      transition: background 0.1s, transform 0.1s;
-    }
-
-    .sim-btn:active, .sim-btn.active {
-      background: var(--accent-gold);
-      color: #0D131C;
-      transform: scale(0.97);
-    }
-
-    .btn-accel {
-      color: var(--success);
-      border-color: rgba(46, 196, 182, 0.35);
-    }
-    .btn-accel:active, .btn-accel.active {
-      background: var(--success);
-      color: #0D131C;
-    }
-
-    .btn-brake {
-      color: var(--danger);
-      border-color: rgba(239, 68, 68, 0.35);
-    }
-    .btn-brake:active, .btn-brake.active {
-      background: var(--danger);
-      color: #FFFFFF;
-    }
-
-    .btn-nitro {
-      background: linear-gradient(135deg, #06B6D4, #0891B2);
-      color: #FFFFFF;
-      border: none;
+      border-radius: 8px;
       font-weight: 800;
-    }
-    .btn-nitro:active {
-      background: #0E7490;
-      transform: scale(0.96);
-    }
-
-    .sim-hint {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-align: center;
-      margin-top: 0.2rem;
-    }
-
-    /* FEATURES SECTION */
-    .section-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .section-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      color: #FFFFFF;
-      margin-bottom: 0.4rem;
-    }
-
-    .section-header p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.2rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .feature-card {
-      background: var(--surface-card);
-      border: 1px solid var(--surface-border);
-      border-radius: 14px;
-      padding: 1.35rem;
-      transition: all 0.2s ease;
-    }
-
-    .feature-card:hover {
-      border-color: var(--accent-gold);
-      transform: translateY(-2px);
-    }
-
-    .feature-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      background: rgba(229, 169, 60, 0.15);
+      font-size: 0.78rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.35rem;
-      margin-bottom: 0.9rem;
+      gap: 0.25rem;
+      cursor: pointer;
+      user-select: none;
     }
 
-    .feature-card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.4rem;
+    .ctrl-btn:active, .ctrl-btn.active {
+      background: var(--accent-gold);
+      color: #0B1017;
+      transform: scale(0.97);
+    }
+
+    .btn-acc { color: var(--success); border-color: rgba(16,185,129,0.3); }
+    .btn-acc:active, .btn-acc.active { background: var(--success); color: #0B1017; }
+
+    .btn-brk { color: var(--danger); border-color: rgba(239,68,68,0.3); }
+    .btn-brk:active, .btn-brk.active { background: var(--danger); color: #FFF; }
+
+    .btn-nitro {
+      background: linear-gradient(135deg, #06B6D4, #0891B2);
+      color: #FFF;
+      border: none;
+    }
+
+    /* QUIZ CARDS */
+    .quiz-sign-box {
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      background: #DC2626;
+      border: 3px solid #FFFFFF;
       color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.1rem;
+      margin: 0 auto 0.75rem;
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
     }
 
-    .feature-card p {
+    .quiz-option {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.15s;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--accent-gold);
+    }
+
+    .quiz-option.correct {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: var(--success);
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .quiz-option.wrong {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    /* COURSE CARDS */
+    .course-item {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 0.85rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .course-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .course-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #FFF;
+    }
+
+    .course-price {
+      color: var(--accent-gold);
+      font-weight: 900;
+      font-size: 1rem;
+    }
+
+    .course-specs {
+      font-size: 0.75rem;
       color: var(--text-muted);
-      font-size: 0.85rem;
-      line-height: 1.5;
     }
 
-    /* MODAL STYLES */
-    .modal-overlay {
+    /* ACTION BUTTONS */
+    .action-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent-gold), #C98A20);
+      color: #0B1017;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 0.65rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin-top: 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+
+    /* ANDROID BOTTOM NAVIGATION BAR */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 480px;
+      background: rgba(18, 24, 36, 0.96);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--surface-border);
+      display: flex;
+      justify-content: space-around;
+      padding: 0.45rem 0.2rem 0.6rem;
+      z-index: 100;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 0.2rem 0.4rem;
+      border-radius: 8px;
+      flex: 1;
+      transition: all 0.15s;
+    }
+
+    .nav-item .icon {
+      font-size: 1.15rem;
+    }
+
+    .nav-item.active {
+      color: var(--accent-gold);
+    }
+
+    .nav-item.active .icon {
+      transform: scale(1.1);
+    }
+
+    /* MODAL */
+    .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(6px);
       z-index: 200;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 1rem;
     }
+    .modal-backdrop.active { display: flex; }
 
-    .modal-overlay.active {
-      display: flex;
-    }
-
-    .modal-box {
+    .modal-card {
       background: var(--surface-dark);
       border: 1.5px solid var(--accent-gold);
-      border-radius: 18px;
+      border-radius: 14px;
       width: 100%;
-      max-width: 440px;
-      padding: 1.5rem;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+      max-width: 380px;
+      padding: 1.25rem;
       position: relative;
     }
 
     .modal-close {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      top: 0.75rem;
+      right: 0.75rem;
       background: var(--surface-card);
       border: 1px solid var(--surface-border);
-      color: var(--text-light);
-      width: 32px;
-      height: 32px;
+      color: #FFF;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .modal-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      color: var(--accent-gold);
-      margin-bottom: 0.35rem;
-    }
-
-    .modal-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-    }
-
-    .form-group {
-      margin-bottom: 0.9rem;
-    }
-
-    .form-label {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 0.3rem;
-    }
-
-    .form-input {
-      width: 100%;
-      background: var(--surface-card);
-      border: 1px solid var(--surface-border);
-      color: var(--text-light);
-      border-radius: 8px;
-      padding: 0.65rem 0.85rem;
-      font-size: 0.88rem;
-      outline: none;
-      font-family: inherit;
-    }
-
-    .form-input:focus {
-      border-color: var(--accent-gold);
-    }
-
-    .modal-btn {
-      width: 100%;
-      background: linear-gradient(135deg, var(--accent-gold), #C98A20);
-      color: #0D131C;
-      font-weight: 800;
-      font-size: 0.92rem;
-      padding: 0.75rem;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      margin-top: 0.5rem;
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--surface-border);
-      padding: 2rem 1rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.25rem;
-      margin-bottom: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: var(--accent-gold);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    /* RESPONSIVE TWEAKS */
-    @media (max-width: 480px) {
-      .canvas-wrapper {
-        height: 220px;
-      }
-      .brand-title {
-        font-size: 0.95rem;
-      }
-      .brand-sub {
-        font-size: 0.62rem;
-      }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="nav-container">
-      <a href="#" class="brand">
-        <div class="brand-logo">D&amp;D</div>
-        <div class="brand-text">
-          <div class="brand-title">D&amp;D Driving Center</div>
-          <div class="brand-sub">Android App &amp; Portal</div>
+  <!-- EXPLANATION BANNER -->
+  <div class="platform-info-bar">
+    <span>💡 <strong>Full Android Web Client:</strong> Interactive preview mirroring the Native Jetpack Compose app.</span>
+  </div>
+
+  <div class="app-shell">
+    <!-- ANDROID TOP BAR -->
+    <header class="app-bar">
+      <div class="brand-group">
+        <div class="app-logo">D&amp;D</div>
+        <div class="app-title-box">
+          <h1>D&amp;D Driving Center</h1>
+          <span>Executive Academy</span>
         </div>
-      </a>
-      <div class="nav-actions">
-        <button class="header-btn" onclick="openAdmissionModal()">
+      </div>
+      <div class="app-bar-actions">
+        <button class="badge-btn" onclick="openAdmissionModal()">
           <span>📅 Book Slot</span>
         </button>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- MAIN CONTENT -->
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="badge-pill">
-        <span>✨ Native Android 14+ • Jetpack Compose • 3D Simulator</span>
-      </div>
-      <h1>Drive with Confidence.<br /><span>Learn from the Best.</span></h1>
-      <p>
-        The official modern Android application for D&amp;D Driving Center. Experience our custom 3D vehicle physics simulator, official RTO mock tests, live GPS instructor radar, and flexible 0% interest EMI calculator.
-      </p>
-      <div class="hero-actions">
-        <button class="cta-primary" onclick="openDownloadModal()">
-          <span>📲 Get Android App</span>
-        </button>
-        <button class="cta-secondary" onclick="scrollToSim()">
-          <span>🎮 Test Drive Web Simulator</span>
-        </button>
-      </div>
-    </section>
+    <!-- CONTENT WRAPPER -->
+    <main class="app-content">
 
-    <!-- LIVE 3D SIMULATOR CARD -->
-    <section id="simulator" class="simulator-card">
-      <div class="sim-top-bar">
-        <div class="sim-title">
-          <span>🎮 3D Road Simulator</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal;">(Indian Left Lane)</span>
-        </div>
-        <div class="sim-hud">
-          <span style="color: var(--accent-gold);">SPEED: <span id="speedVal">0</span> KM/H</span>
-          <span style="color: var(--success);">GEAR: <span id="gearVal">D</span></span>
-          <span style="color: var(--accent-cyan);">⭐ <span id="xpVal">1250</span> XP</span>
-        </div>
-      </div>
-
-      <div class="canvas-wrapper">
-        <canvas id="simCanvas"></canvas>
-      </div>
-
-      <!-- TOUCH & MOBILE FRIENDLY SIMULATOR CONTROLS -->
-      <div class="sim-controls-panel">
-        <div class="sim-btn-row">
-          <button class="sim-btn" id="btnSteerLeft">◀ Steer Left</button>
-          <button class="sim-btn" id="btnSteerRight">Steer Right ▶</button>
-          <button class="sim-btn" onclick="toggleNight()">🌙 Night/Day</button>
-        </div>
-        <div class="sim-btn-row">
-          <button class="sim-btn btn-accel" id="btnAccel">⚡ Accelerate</button>
-          <button class="sim-btn btn-brake" id="btnBrake">🛑 Brake</button>
-          <button class="sim-btn btn-nitro" onclick="boostNitro()">🚀 Nitro</button>
-        </div>
-        <p class="sim-hint">
-          💡 Touch &amp; Hold buttons above or use Keyboard Arrow Keys (← / → / ↑ / ↓) &amp; Spacebar for Nitro
-        </p>
-      </div>
-    </section>
-
-    <!-- FEATURES -->
-    <section id="features">
-      <div class="section-header">
-        <h2>Certified Driver Training</h2>
-        <p>Comprehensive features designed for safe, confident driving mastery.</p>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🎮</div>
-          <h3>3D Interactive Simulator</h3>
-          <p>Real-time Canvas physics with steering wheel angle, clutch biting telemetry, arcade nitro boost, reverse parking sonar radar, and gyroscope tilt steering.</p>
+      <!-- TAB 1: HOME SCREEN -->
+      <section id="tab-home" class="tab-panel active">
+        <div class="ui-card gold-card">
+          <div class="hero-badge">⭐ ISO 9001:2015 CERTIFIED ACADEMY</div>
+          <h2 class="hero-heading">Drive with <span>Confidence.</span></h2>
+          <p class="hero-p">Government Approved RTO Driving Academy. Master manual clutch control, automatic SUV precision, and defensive highway driving.</p>
+          <div class="btn-row">
+            <button class="action-btn" onclick="switchTab('simulator')">🎮 Launch 3D Simulator</button>
+            <button class="action-btn" style="background: var(--surface-card); color: #FFF; border: 1px solid var(--surface-border);" onclick="switchTab('courses')">💳 0% EMI Fees</button>
+          </div>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon">🛑</div>
-          <h3>RTO Quiz &amp; Voiceover Audio</h3>
-          <p>Practice authentic RTO licensing questions with multi-lingual audio explanations in English, Hindi, and Bengali.</p>
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="val">99.4%</div>
+            <div class="lbl">RTO Pass Rate</div>
+          </div>
+          <div class="stat-item">
+            <div class="val">14,200+</div>
+            <div class="lbl">Graduates</div>
+          </div>
+          <div class="stat-item">
+            <div class="val">100%</div>
+            <div class="lbl">Dual-Control</div>
+          </div>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon">📍</div>
-          <h3>Live GPS Pickup Radar</h3>
-          <p>View instructor locations, estimated arrival times, and student pickup hubs across all training zones.</p>
+        <div class="ui-card">
+          <h3 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 0.6rem; color: #FFF;">🎓 Featured Training Programs</h3>
+          <div class="course-item">
+            <div class="course-header">
+              <span class="course-title">🚗 Manual Hatchback (Swift)</span>
+              <span class="course-price">₹4,500</span>
+            </div>
+            <p class="course-specs">20 Practical Days • Clutch &amp; Hill Balance • Reverse Parking</p>
+            <button class="action-btn" onclick="openAdmissionModal()">Enroll Now (₹1,500/mo)</button>
+          </div>
+          <div class="course-item">
+            <div class="course-header">
+              <span class="course-title">🚙 Automatic SUV (Brezza)</span>
+              <span class="course-price">₹6,000</span>
+            </div>
+            <p class="course-specs">15 Days • Highway Overtaking • Sensor Sonar Parking</p>
+            <button class="action-btn" onclick="openAdmissionModal()">Enroll Now (₹2,000/mo)</button>
+          </div>
         </div>
+      </section>
 
-        <div class="feature-card">
-          <div class="feature-icon">💳</div>
-          <h3>0% EMI Installment Plans</h3>
-          <p>Affordable, transparent fee structures for Manual Hatchback, Automatic SUV, and Combo training packages.</p>
-        </div>
+      <!-- TAB 2: 3D SIMULATOR -->
+      <section id="tab-simulator" class="tab-panel">
+        <div class="ui-card gold-card" style="padding: 0.75rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-weight: 800; font-size: 0.9rem; color: var(--accent-gold);">🎮 3D Driver Cockpit (Indian RHD)</span>
+            <span style="font-size: 0.72rem; color: var(--success); font-weight: 800;">ENGINE: ON</span>
+          </div>
 
-        <div class="feature-card">
-          <div class="feature-icon">📜</div>
-          <h3>Digital Course Certificates</h3>
-          <p>Instant digital driver training completion certificates verified with dynamic student credentials.</p>
-        </div>
+          <div class="sim-viewport">
+            <div class="sim-hud-overlay">
+              <span class="hud-chip" style="color: var(--accent-gold);">SPEED: <span id="simSpeed">0</span> KM/H</span>
+              <span class="hud-chip" style="color: var(--accent-cyan);">XP: <span id="simXp">1250</span></span>
+            </div>
+            <canvas id="simCanvas"></canvas>
+          </div>
 
-        <div class="feature-card">
-          <div class="feature-icon">🆘</div>
-          <h3>24x7 Roadside Safety SOS</h3>
-          <p>1-tap emergency patrol hotline with step-by-step visual guides for tire changes, battery jump-starts, and emergency stops.</p>
+          <div class="controls-grid">
+            <div class="btn-row">
+              <button class="ctrl-btn" id="sLeft">◀ Steer Left</button>
+              <button class="ctrl-btn" id="sRight">Steer Right ▶</button>
+              <button class="ctrl-btn" onclick="toggleSimNight()">🌙 Night/Day</button>
+            </div>
+            <div class="btn-row">
+              <button class="ctrl-btn btn-acc" id="sAcc">⚡ Accelerate</button>
+              <button class="ctrl-btn btn-brk" id="sBrk">🛑 Brake</button>
+              <button class="ctrl-btn btn-nitro" onclick="triggerSimNitro()">🚀 Nitro</button>
+            </div>
+          </div>
+          <p style="font-size: 0.68rem; color: var(--text-muted); text-align: center; margin-top: 0.4rem;">
+            💡 Touch &amp; Hold pedals above or use Keyboard Arrow Keys (← / → / ↑ / ↓)
+          </p>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <!-- MODAL: BOOK ADMISSION / TRIAL -->
-  <div class="modal-overlay" id="admissionModal">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModals()">✕</button>
-      <div class="modal-title">📅 Book Free Trial Class</div>
-      <div class="modal-desc">Schedule your first hands-on driving lesson with certified D&amp;D instructors.</div>
-      <form onsubmit="handleBooking(event)">
-        <div class="form-group">
-          <label class="form-label">Full Name</label>
-          <input type="text" class="form-input" placeholder="e.g. Rahul Sharma" required />
+      <!-- TAB 3: RTO QUIZ -->
+      <section id="tab-quiz" class="tab-panel">
+        <div class="ui-card gold-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <span style="font-weight: 800; font-size: 0.9rem; color: var(--accent-gold);">🛑 Official RTO Test Exam</span>
+            <span style="font-size: 0.75rem; color: var(--success); font-weight: 800;">Score: <span id="quizScore">0</span> / 100</span>
+          </div>
+
+          <div class="quiz-sign-box" id="quizSignIcon">STOP</div>
+          <h4 id="quizQuestion" style="font-size: 0.95rem; font-weight: 800; text-align: center; margin-bottom: 0.85rem; color: #FFF;">
+            What does this octagonal sign mean?
+          </h4>
+
+          <div id="quizOptionsContainer">
+            <div class="quiz-option" onclick="checkQuizAnswer(0)">A) Slow down and proceed</div>
+            <div class="quiz-option" onclick="checkQuizAnswer(1)">B) Mandatory Complete Stop</div>
+            <div class="quiz-option" onclick="checkQuizAnswer(2)">C) No Parking Zone</div>
+            <div class="quiz-option" onclick="checkQuizAnswer(3)">D) Speed Up for Green Light</div>
+          </div>
+
+          <button class="action-btn" style="margin-top: 0.75rem;" onclick="nextQuizQuestion()">Next Question ➡️</button>
         </div>
-        <div class="form-group">
-          <label class="form-label">Phone / WhatsApp Number</label>
-          <input type="tel" class="form-input" placeholder="+91 98765 43210" required />
+      </section>
+
+      <!-- TAB 4: COURSES & EMI CALCULATOR -->
+      <section id="tab-courses" class="tab-panel">
+        <div class="ui-card gold-card">
+          <h3 style="font-size: 0.95rem; font-weight: 800; color: var(--accent-gold); margin-bottom: 0.4rem;">💳 0% Interest EMI Calculator</h3>
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem;">Split your training fee into easy monthly installments.</p>
+
+          <label style="font-size: 0.75rem; font-weight: 700; color: #FFF;">Select Course Fee: <strong id="emiFeeVal" style="color: var(--accent-gold);">₹6,000</strong></label>
+          <input type="range" min="4000" max="10000" step="500" value="6000" style="width: 100%; margin: 0.4rem 0 0.8rem;" oninput="updateEmi(this.value)" />
+
+          <div class="stats-row">
+            <div class="stat-item">
+              <div class="val" id="emi3m">₹2,000</div>
+              <div class="lbl">3 Months</div>
+            </div>
+            <div class="stat-item">
+              <div class="val" id="emi6m">₹1,000</div>
+              <div class="lbl">6 Months</div>
+            </div>
+            <div class="stat-item">
+              <div class="val">0%</div>
+              <div class="lbl">Interest</div>
+            </div>
+          </div>
+
+          <button class="action-btn" onclick="openAdmissionModal()">Apply for Instant 0% EMI 🚀</button>
         </div>
-        <div class="form-group">
-          <label class="form-label">Vehicle Preference</label>
-          <select class="form-input">
-            <option>Manual Hatchback (Swift / i10)</option>
-            <option>Automatic SUV (Brezza / Creta)</option>
-            <option>Complete Combo (Manual + Automatic + RTO Exam)</option>
-          </select>
+      </section>
+
+      <!-- TAB 5: CERTIFICATE -->
+      <section id="tab-certificate" class="tab-panel">
+        <div class="ui-card gold-card" style="text-align: center;">
+          <span style="font-size: 1.6rem;">📜</span>
+          <h3 style="font-size: 1.1rem; font-weight: 900; color: var(--accent-gold); margin: 0.2rem 0;">D&amp;D Graduate Certificate</h3>
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.85rem;">Official verification of driver training completion.</p>
+
+          <div style="border: 2px dashed var(--accent-gold); border-radius: 10px; padding: 1rem; background: rgba(0,0,0,0.3); margin-bottom: 0.75rem;">
+            <p style="font-size: 0.7rem; color: var(--text-muted);">CERTIFIED TO:</p>
+            <h4 style="font-size: 1.15rem; color: #FFF; font-weight: 900;">RAHUL SHARMA</h4>
+            <p style="font-size: 0.72rem; color: var(--success); font-weight: 700; margin-top: 0.3rem;">✅ COMPLETED: 20/20 PRACTICAL HOURS</p>
+            <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 0.2rem;">Certificate ID: DND-2026-9482</p>
+          </div>
+
+          <button class="action-btn" onclick="alert('📥 Certificate downloaded in PDF format!')">Download Digital Certificate 📥</button>
         </div>
-        <button type="submit" class="modal-btn">Confirm Free Slot Booking 🚗</button>
+      </section>
+
+      <!-- TAB 6: SAFETY SOS -->
+      <section id="tab-sos" class="tab-panel">
+        <div class="ui-card" style="border-color: var(--danger); background: rgba(239, 68, 68, 0.1);">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;">
+            <span style="font-size: 1.3rem;">🆘</span>
+            <h3 style="font-size: 1rem; font-weight: 900; color: var(--danger);">24x7 Roadside Patrol SOS</h3>
+          </div>
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem;">Instant emergency response for battery dead, flat tire, and breakdown assistance.</p>
+          <a href="tel:+919876543210" class="action-btn" style="background: var(--danger); color: #FFF; text-decoration: none;">📞 Call Emergency Patrol Desk</a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ANDROID BOTTOM NAVIGATION BAR -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" onclick="switchTab('home')">
+        <span class="icon">🏠</span>
+        <span>Home</span>
+      </button>
+      <button class="nav-item" onclick="switchTab('simulator')">
+        <span class="icon">🎮</span>
+        <span>Simulator</span>
+      </button>
+      <button class="nav-item" onclick="switchTab('quiz')">
+        <span class="icon">🛑</span>
+        <span>RTO Quiz</span>
+      </button>
+      <button class="nav-item" onclick="switchTab('courses')">
+        <span class="icon">💳</span>
+        <span>Courses</span>
+      </button>
+      <button class="nav-item" onclick="switchTab('certificate')">
+        <span class="icon">📜</span>
+        <span>Certificate</span>
+      </button>
+      <button class="nav-item" onclick="switchTab('sos')">
+        <span class="icon">🆘</span>
+        <span>SOS</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- MODAL: ADMISSION -->
+  <div class="modal-backdrop" id="admissionModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h3 style="font-size: 1.1rem; font-weight: 900; color: var(--accent-gold); margin-bottom: 0.2rem;">📅 Book Driving Slot</h3>
+      <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.8rem;">Schedule your training class with certified instructors.</p>
+      <form onsubmit="handleSlotBooking(event)">
+        <div style="margin-bottom: 0.6rem;">
+          <label style="font-size: 0.72rem; font-weight: 700; color: #FFF;">Full Name</label>
+          <input type="text" required style="width: 100%; padding: 0.55rem; background: var(--surface-card); border: 1px solid var(--surface-border); border-radius: 6px; color: #FFF; font-size: 0.85rem;" placeholder="Your Name" />
+        </div>
+        <div style="margin-bottom: 0.6rem;">
+          <label style="font-size: 0.72rem; font-weight: 700; color: #FFF;">Phone / WhatsApp</label>
+          <input type="tel" required style="width: 100%; padding: 0.55rem; background: var(--surface-card); border: 1px solid var(--surface-border); border-radius: 6px; color: #FFF; font-size: 0.85rem;" placeholder="+91 98765 43210" />
+        </div>
+        <button type="submit" class="action-btn">Confirm Class Slot 🚗</button>
       </form>
     </div>
   </div>
 
-  <!-- MODAL: DOWNLOAD APP -->
-  <div class="modal-overlay" id="downloadModal">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModals()">✕</button>
-      <div class="modal-title">📲 Download D&amp;D Android App</div>
-      <div class="modal-desc">Install the full native Android experience built with Jetpack Compose &amp; Room database.</div>
-      <div style="background: rgba(229,169,60,0.1); border: 1px solid var(--accent-gold); border-radius: 10px; padding: 1rem; margin-bottom: 1rem;">
-        <p style="font-size: 0.85rem; color: #FFFFFF; font-weight: 600; margin-bottom: 0.3rem;">🚀 How to install on your Android device:</p>
-        <ol style="font-size: 0.8rem; color: var(--text-muted); padding-left: 1.2rem; line-height: 1.5;">
-          <li>In AI Studio or GitHub, export the project as <strong>APK / AAB</strong>.</li>
-          <li>Or run directly on your phone using Android Studio.</li>
-        </ol>
-      </div>
-      <button class="modal-btn" onclick="openAdmissionModal()">Need Help? Contact Admission Desk 📞</button>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-links">
-      <a href="tel:+919876543210">📞 Call Us: +91 98765 43210</a>
-      <a href="https://wa.me/919876543210" target="_blank">💬 WhatsApp Support</a>
-      <a href="https://github.com" target="_blank">⭐ Project Repository</a>
-    </div>
-    <p>&copy; 2026 D&amp;D Driving Center. All rights reserved. Built with Jetpack Compose, Kotlin &amp; Material 3.</p>
-  </footer>
-
-  <!-- 3D SIMULATOR JAVASCRIPT ENGINE -->
   <script>
+    // TAB SWITCHER
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+      const targetPanel = document.getElementById('tab-' + tabId);
+      if (targetPanel) targetPanel.classList.add('active');
+
+      const tabs = ['home', 'simulator', 'quiz', 'courses', 'certificate', 'sos'];
+      const idx = tabs.indexOf(tabId);
+      if (idx !== -1) {
+        document.querySelectorAll('.nav-item')[idx].classList.add('active');
+      }
+
+      if (tabId === 'simulator') {
+        setTimeout(resizeCanvas, 50);
+      }
+    }
+
+    // MODAL
+    function openAdmissionModal() {
+      document.getElementById('admissionModal').classList.add('active');
+    }
+    function closeModal() {
+      document.getElementById('admissionModal').classList.remove('active');
+    }
+    function handleSlotBooking(e) {
+      e.preventDefault();
+      alert('🎉 Slot request submitted! Our admission coordinator will call you within 15 minutes.');
+      closeModal();
+    }
+
+    // EMI CALCULATOR
+    function updateEmi(val) {
+      document.getElementById('emiFeeVal').textContent = '₹' + parseInt(val).toLocaleString();
+      document.getElementById('emi3m').textContent = '₹' + Math.round(val / 3).toLocaleString();
+      document.getElementById('emi6m').textContent = '₹' + Math.round(val / 6).toLocaleString();
+    }
+
+    // QUIZ ENGINE
+    const quizData = [
+      {
+        sign: "STOP",
+        bg: "#DC2626",
+        q: "What does this octagonal sign mean?",
+        options: ["A) Slow down and proceed", "B) Mandatory Complete Stop", "C) No Parking Zone", "D) Speed Up for Green Light"],
+        correct: 1
+      },
+      {
+        sign: "NO U",
+        bg: "#EA580C",
+        q: "What does this curved prohibition sign indicate?",
+        options: ["A) Compulsory U-Turn Ahead", "B) One Way Traffic Only", "C) Strictly Prohibited U-Turn", "D) Roundabout Ahead"],
+        correct: 2
+      },
+      {
+        sign: "CROSS",
+        bg: "#2563EB",
+        q: "What must you do at a Zebra Pedestrian Crossing?",
+        options: ["A) Give complete right of way to pedestrians", "B) Honk continuously to clear path", "C) Speed up before pedestrians step in", "D) Overtake from the left shoulder"],
+        correct: 0
+      }
+    ];
+
+    let currentQ = 0;
+    let quizScore = 0;
+
+    function renderQuiz() {
+      const q = quizData[currentQ];
+      const signBox = document.getElementById('quizSignIcon');
+      signBox.textContent = q.sign;
+      signBox.style.background = q.bg;
+      document.getElementById('quizQuestion').textContent = q.q;
+
+      const container = document.getElementById('quizOptionsContainer');
+      container.innerHTML = '';
+      q.options.forEach((opt, idx) => {
+        const div = document.createElement('div');
+        div.className = 'quiz-option';
+        div.textContent = opt;
+        div.onclick = () => checkQuizAnswer(idx);
+        container.appendChild(div);
+      });
+    }
+
+    function checkQuizAnswer(selectedIdx) {
+      const q = quizData[currentQ];
+      const opts = document.querySelectorAll('.quiz-option');
+      opts.forEach((o, idx) => {
+        if (idx === q.correct) o.classList.add('correct');
+        else if (idx === selectedIdx) o.classList.add('wrong');
+        o.onclick = null;
+      });
+      if (selectedIdx === q.correct) {
+        quizScore += 33;
+        document.getElementById('quizScore').textContent = quizScore;
+      }
+    }
+
+    function nextQuizQuestion() {
+      currentQ = (currentQ + 1) % quizData.length;
+      renderQuiz();
+    }
+    renderQuiz();
+
+    // 3D ROAD SIMULATOR ENGINE
     const canvas = document.getElementById('simCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -764,235 +883,124 @@
     let offset = 0;
     let isNight = true;
     let xp = 1250;
-    let isAccelerating = false;
-    let isBraking = false;
+    let isAcc = false;
+    let isBrk = false;
 
-    function draw() {
+    function drawSim() {
       const w = canvas.width;
       const h = canvas.height;
       if (w === 0 || h === 0) {
-        requestAnimationFrame(draw);
+        requestAnimationFrame(drawSim);
         return;
       }
 
       const horizon = h * 0.42;
-
-      // Smooth steering interpolation
       currentSteering += (targetSteering - currentSteering) * 0.2;
 
-      // Physics loop
-      if (isAccelerating) {
-        speed = Math.min(100, speed + 0.8);
-      } else if (isBraking) {
-        speed = Math.max(0, speed - 1.5);
-      } else {
-        speed = Math.max(15, speed - 0.1);
-      }
-      document.getElementById('speedVal').textContent = Math.round(speed);
+      if (isAcc) speed = Math.min(100, speed + 0.8);
+      else if (isBrk) speed = Math.max(0, speed - 1.5);
+      else speed = Math.max(15, speed - 0.1);
 
-      // 1. SKY
+      document.getElementById('simSpeed').textContent = Math.round(speed);
+
+      // Sky
       const skyGrad = ctx.createLinearGradient(0, 0, 0, horizon);
-      if (isNight) {
-        skyGrad.addColorStop(0, '#030712');
-        skyGrad.addColorStop(1, '#0F172A');
-      } else {
-        skyGrad.addColorStop(0, '#1E3A8A');
-        skyGrad.addColorStop(1, '#60A5FA');
-      }
+      skyGrad.addColorStop(0, isNight ? '#030712' : '#1E3A8A');
+      skyGrad.addColorStop(1, isNight ? '#0F172A' : '#60A5FA');
       ctx.fillStyle = skyGrad;
       ctx.fillRect(0, 0, w, horizon);
 
-      // Stars at night
+      // Stars
       if (isNight) {
         ctx.fillStyle = '#FFFFFF';
-        for (let i = 0; i < 20; i++) {
-          const sx = (i * 53) % w;
-          const sy = (i * 29) % (horizon * 0.8);
-          ctx.beginPath();
-          ctx.arc(sx, sy, 1.2, 0, Math.PI * 2);
-          ctx.fill();
+        for (let i = 0; i < 15; i++) {
+          ctx.fillRect((i * 47) % w, (i * 23) % (horizon * 0.75), 1.5, 1.5);
         }
       }
 
-      // 2. CITY SKYLINE
-      ctx.fillStyle = isNight ? '#0B1324' : '#1E293B';
-      const buildingWidth = w / 12;
-      for (let b = 0; b < w + buildingWidth; b += buildingWidth) {
-        const bh = ((b * 17) % (horizon * 0.5)) + 20;
-        ctx.fillRect(b, horizon - bh, buildingWidth - 4, bh);
-      }
-
-      // 3. PERSPECTIVE ROAD (Indian Left-Hand Drive)
+      // Road
       const vanishingX = w * 0.5 + currentSteering * (w * 0.015);
       ctx.beginPath();
-      ctx.moveTo(vanishingX - 25, horizon);
-      ctx.lineTo(vanishingX + 25, horizon);
+      ctx.moveTo(vanishingX - 20, horizon);
+      ctx.lineTo(vanishingX + 20, horizon);
       ctx.lineTo(w * 1.15, h);
       ctx.lineTo(-w * 0.15, h);
       ctx.closePath();
       ctx.fillStyle = isNight ? '#0B0F19' : '#172033';
       ctx.fill();
 
-      // Road shoulder lines (Gold)
+      // Road Borders (Gold)
       ctx.strokeStyle = '#E5A93C';
       ctx.lineWidth = 3 * (window.devicePixelRatio || 1);
       ctx.beginPath();
-      ctx.moveTo(vanishingX - 25, horizon);
-      ctx.lineTo(-w * 0.15, h);
-      ctx.stroke();
-
+      ctx.moveTo(vanishingX - 20, horizon); ctx.lineTo(-w * 0.15, h); ctx.stroke();
       ctx.beginPath();
-      ctx.moveTo(vanishingX + 25, horizon);
-      ctx.lineTo(w * 1.15, h);
-      ctx.stroke();
+      ctx.moveTo(vanishingX + 20, horizon); ctx.lineTo(w * 1.15, h); ctx.stroke();
 
-      // Road Center Divider Stripes
+      // Stripes
       offset = (offset + speed * 0.12) % 100;
       for (let i = 0; i < 5; i++) {
         const prog = ((i * 20 + offset) % 100) / 100;
         const py = horizon + (h - horizon) * prog;
-        const px = vanishingX;
-        const sw = (2 + prog * 10) * (window.devicePixelRatio || 1);
-        const sh = (3 + prog * 16) * (window.devicePixelRatio || 1);
+        const sw = (2 + prog * 8) * (window.devicePixelRatio || 1);
+        const sh = (3 + prog * 14) * (window.devicePixelRatio || 1);
         ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(0.9, prog + 0.2)})`;
-        ctx.fillRect(px - sw / 2, py, sw, sh);
+        ctx.fillRect(vanishingX - sw / 2, py, sw, sh);
       }
 
-      // Oncoming traffic vehicle
-      const carProg = ((offset * 1.4) % 100) / 100;
-      if (carProg > 0.1) {
-        const cy = horizon + (h - horizon) * carProg * 0.75;
-        const cx = vanishingX + (w * 0.18 * carProg);
-        const cw = (10 + carProg * 32) * (window.devicePixelRatio || 1);
-        const ch = (6 + carProg * 20) * (window.devicePixelRatio || 1);
-
-        ctx.fillStyle = '#EF4444';
-        ctx.fillRect(cx - cw / 2, cy, cw, ch);
-        ctx.fillStyle = '#F5C66C';
-        ctx.beginPath();
-        ctx.arc(cx - cw * 0.3, cy + ch * 0.4, (1.5 + carProg * 2.5) * (window.devicePixelRatio || 1), 0, Math.PI * 2);
-        ctx.arc(cx + cw * 0.3, cy + ch * 0.4, (1.5 + carProg * 2.5) * (window.devicePixelRatio || 1), 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // 4. RHD STEERING WHEEL HUD (Bottom Right)
-      const stX = w * 0.78;
-      const stY = h - (35 * (window.devicePixelRatio || 1));
-      const stRadius = 32 * (window.devicePixelRatio || 1);
+      // RHD Steering Wheel
+      const stX = w * 0.8;
+      const stY = h - (30 * (window.devicePixelRatio || 1));
+      const stRadius = 26 * (window.devicePixelRatio || 1);
       ctx.save();
       ctx.translate(stX, stY);
       ctx.rotate((currentSteering * Math.PI) / 180);
       ctx.beginPath();
       ctx.arc(0, 0, stRadius, 0, Math.PI * 2);
       ctx.strokeStyle = '#E5A93C';
-      ctx.lineWidth = 4 * (window.devicePixelRatio || 1);
-      ctx.stroke();
-      ctx.fillStyle = '#131B26';
-      ctx.fill();
-      // Spokes
-      ctx.strokeStyle = '#E5A93C';
-      ctx.lineWidth = 3 * (window.devicePixelRatio || 1);
-      ctx.beginPath();
-      ctx.moveTo(-stRadius, 0); ctx.lineTo(stRadius, 0);
-      ctx.moveTo(0, 0); ctx.lineTo(0, stRadius);
+      ctx.lineWidth = 3.5 * (window.devicePixelRatio || 1);
       ctx.stroke();
       ctx.restore();
 
-      requestAnimationFrame(draw);
+      requestAnimationFrame(drawSim);
     }
 
-    // BUTTON & TOUCH BINDINGS
-    function setupTouchBtn(btnId, onStart, onEnd) {
-      const btn = document.getElementById(btnId);
-      if (!btn) return;
-
-      const start = (e) => {
-        e.preventDefault();
-        btn.classList.add('active');
-        onStart();
-      };
-      const end = (e) => {
-        e.preventDefault();
-        btn.classList.remove('active');
-        onEnd();
-      };
-
-      btn.addEventListener('mousedown', start);
-      btn.addEventListener('mouseup', end);
-      btn.addEventListener('mouseleave', end);
-      btn.addEventListener('touchstart', start, { passive: false });
-      btn.addEventListener('touchend', end, { passive: false });
-      btn.addEventListener('touchcancel', end, { passive: false });
+    function bindBtn(id, onStart, onEnd) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const s = (e) => { e.preventDefault(); el.classList.add('active'); onStart(); };
+      const e = (e) => { e.preventDefault(); el.classList.remove('active'); onEnd(); };
+      el.addEventListener('mousedown', s); el.addEventListener('mouseup', e); el.addEventListener('mouseleave', e);
+      el.addEventListener('touchstart', s, { passive: false }); el.addEventListener('touchend', e, { passive: false });
     }
 
-    setupTouchBtn('btnSteerLeft', () => targetSteering = -22, () => targetSteering = 0);
-    setupTouchBtn('btnSteerRight', () => targetSteering = 22, () => targetSteering = 0);
-    setupTouchBtn('btnAccel', () => isAccelerating = true, () => isAccelerating = false);
-    setupTouchBtn('btnBrake', () => isBraking = true, () => isBraking = false);
+    bindBtn('sLeft', () => targetSteering = -22, () => targetSteering = 0);
+    bindBtn('sRight', () => targetSteering = 22, () => targetSteering = 0);
+    bindBtn('sAcc', () => isAcc = true, () => isAcc = false);
+    bindBtn('sBrk', () => isBrk = true, () => isBrk = false);
 
-    function toggleNight() {
-      isNight = !isNight;
-    }
-
-    function boostNitro() {
+    function toggleSimNight() { isNight = !isNight; }
+    function triggerSimNitro() {
       speed = Math.min(130, speed + 35);
       xp += 150;
-      document.getElementById('speedVal').textContent = Math.round(speed);
-      document.getElementById('xpVal').textContent = xp;
+      document.getElementById('simXp').textContent = xp;
     }
 
-    // KEYBOARD CONTROLS
+    // Keyboard bindings
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowUp') isAccelerating = true;
-      if (e.key === 'ArrowDown') isBraking = true;
+      if (e.key === 'ArrowUp') isAcc = true;
+      if (e.key === 'ArrowDown') isBrk = true;
       if (e.key === 'ArrowLeft') targetSteering = -22;
       if (e.key === 'ArrowRight') targetSteering = 22;
-      if (e.key === ' ') {
-        e.preventDefault();
-        boostNitro();
-      }
+      if (e.key === ' ') { e.preventDefault(); triggerSimNitro(); }
     });
-
     window.addEventListener('keyup', (e) => {
-      if (e.key === 'ArrowUp') isAccelerating = false;
-      if (e.key === 'ArrowDown') isBraking = false;
+      if (e.key === 'ArrowUp') isAcc = false;
+      if (e.key === 'ArrowDown') isBrk = false;
       if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') targetSteering = 0;
     });
 
-    // NAVIGATION & MODALS
-    function scrollToSim() {
-      document.getElementById('simulator').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function openAdmissionModal() {
-      closeModals();
-      document.getElementById('admissionModal').classList.add('active');
-    }
-
-    function openDownloadModal() {
-      closeModals();
-      document.getElementById('downloadModal').classList.add('active');
-    }
-
-    function closeModals() {
-      document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
-    }
-
-    function handleBooking(e) {
-      e.preventDefault();
-      alert('🎉 Thank you! Your driving trial slot request has been sent to D&D Driving Center. Our admission desk will call you shortly.');
-      closeModals();
-    }
-
-    // Close modal on background click
-    document.querySelectorAll('.modal-overlay').forEach(overlay => {
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) closeModals();
-      });
-    });
-
-    // Start simulation
-    requestAnimationFrame(draw);
+    requestAnimationFrame(drawSim);
   </script>
 </body>
 </html>
